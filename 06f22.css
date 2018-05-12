@@ -1,0 +1,59 @@
+body {background:#eee;text-align:center;}
+em {display:block;color:#999;margin-top:0.5em;}
+em a {color:#999;}
+form {margin:0.5em auto;line-height:1.75em;}
+input {line-height:1.125em;font-size:1em;text-align:center;vertical-align:middle;}
+button {font-size:1em;vertical-align:middle;}
+#k {width:3.5em;}
+#t {width:2.5em;}
+#e {width:2.5em;}
+#c {width:4.5em;}
+#a
+{
+	width:92%;
+	margin:0 auto;
+	background:#fff;
+	padding:0.5em;
+}
+/*simpler to set svg style here instead of <svg> tag*/
+svg
+{
+	display:inline-block;
+	padding:0;
+	margin:0;
+	width:30%;
+	height:30%;
+	fill:none;
+	stroke:#cc0000;
+	stroke-width:5px;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+}
+/*svg error displays when a character is not found in kanjiVG*/
+svg.error {background:#eee;}
+svg.error text
+{
+	text-anchor:middle;
+	font-family:"lucida console",monospace;
+	stroke:transparent;
+	fill:#cc0000;
+	font-size:16px;
+}
+/*here is the critical part: the css animation code*/
+/*stroke-dasharray=300 was chosen to well display long paths (such as in hiragana nu)*/
+/*use opacity=0 to hide path first point when animation starts (on chrome?)*/
+/*use -webkit- prefix to support some old browsers*/
+path {opacity:0;}
+path {stroke-dasharray:300;}
+path {-webkit-animation:dash 0.7s linear forwards;}
+path {animation:dash 0.7s linear forwards;}
+@-webkit-keyframes dash
+{
+	0% {opacity:1;stroke-dashoffset:300;}
+	100% {opacity:1;stroke-dashoffset:0;}
+}
+@keyframes dash
+{
+	0% {opacity:1;stroke-dashoffset:300;}
+	100% {opacity:1;stroke-dashoffset:0;}
+}
